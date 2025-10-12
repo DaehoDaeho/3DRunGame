@@ -551,8 +551,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -920,8 +920,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1241,6 +1241,15 @@ MonoBehaviour:
   - key: Tile_Slide
     prefab: {fileID: 3513782536676198044, guid: 036b1560a3fb0264283d85b3fc3ac7f0, type: 3}
     initialSize: 2
+  - key: Tile_Obstacle_Center
+    prefab: {fileID: 8963929689735124519, guid: 4724e1b549f7c0e4ca248c3e734f841a, type: 3}
+    initialSize: 3
+  - key: Tile_Obstacle_Left
+    prefab: {fileID: 6670945489005402713, guid: 40ddcadb4f41e63478f87c58d3dab929, type: 3}
+    initialSize: 3
+  - key: Tile_Obstacle_Right
+    prefab: {fileID: 5248860019316830881, guid: b2f1be9e9de54344882225e138618321, type: 3}
+    initialSize: 3
 --- !u!4 &1197438251
 Transform:
   m_ObjectHideFlags: 0
@@ -1399,8 +1408,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3059,7 +3068,7 @@ GameObject:
   - component: {fileID: 6982812147204510095}
   - component: {fileID: 6982812147204510096}
   m_Layer: 8
-  m_Name: PlayerArmature
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

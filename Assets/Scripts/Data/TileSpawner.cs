@@ -11,6 +11,9 @@ public class TileSpawner : MonoBehaviour
     public string straightKey = "Tile_Straight";
     public string jumpKey = "Tile_Jump";
     public string slideKey = "Tile_Slide";
+    public string obstacleCenterKey = "Tile_Obstacle_Center";
+    public string obstacleLeftKey = "Tile_Obstacle_Left";
+    public string obstacleRightKey = "Tile_Obstacle_Right";
 
     [Header("Config")]
     public float tileLength = 20f;  // 각 타일 길이(20m)
@@ -56,7 +59,7 @@ public class TileSpawner : MonoBehaviour
 
             if (endZ < playerZ - tileLength)
             {
-                // 반환
+                // 반환.
                 ReturnTile(first);
                 activeTiles.RemoveFirst();
             }
@@ -75,7 +78,7 @@ public class TileSpawner : MonoBehaviour
 
     private string RandomKey()
     {
-        int r = Random.Range(0, 3);
+        int r = Random.Range(0, 6);
 
         if (r == 0)
         {
@@ -85,6 +88,21 @@ public class TileSpawner : MonoBehaviour
         if (r == 1)
         {
             return jumpKey;
+        }
+
+        if (r == 2)
+        {
+            return obstacleCenterKey;
+        }
+
+        if (r == 3)
+        {
+            return obstacleLeftKey;
+        }
+
+        if (r == 4)
+        {
+            return obstacleRightKey;
         }
 
         return slideKey;

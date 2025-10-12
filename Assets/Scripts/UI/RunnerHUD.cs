@@ -7,7 +7,7 @@ public class RunnerHUD : MonoBehaviour
     public TMP_Text distanceText;
     public TMP_Text speedText;
     public TMP_Text coinText;
-    public Rigidbody optionalRb; // ������ �÷��̾� Z �ӵ��� ����
+    public Rigidbody optionalRb; // 만약 Rigidbody를 사용한다면 연결.
 
     private Vector3 startPos;
     private int coins = 0;
