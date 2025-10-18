@@ -16,9 +16,14 @@ public class RunnerPlayerController : MonoBehaviour
     public float slideHeight = 1.2f;
     public float slideCenterY = 0.6f;
 
-    [Header("Reference")]
+    [Header("Reference")]    
     public Animator anim;
     public Transform modelRoot;
+
+    [Header("BoostPad")]
+    public RunnerSpeedBooster booster;
+    public float boostMultiplier = 1.4f;    // 속도 배율(1.2~1.6 권장)
+    public float duration = 1.5f;   // 지속 시간(초)
 
     private CharacterController cc;
     private int laneIndex = 0;
@@ -141,6 +146,15 @@ public class RunnerPlayerController : MonoBehaviour
             if(gm != null)
             {
                 gm.GameOver();
+            }
+        }
+
+        if(hit.collider != null && hit.collider.CompareTag("BoostPad") == true)
+        {
+            if (booster != null)
+            {
+                Debug.Log("Boost!!");
+                booster.TriggerBoost(boostMultiplier, duration);
             }
         }
     }

@@ -14,6 +14,8 @@ public class TileSpawner : MonoBehaviour
     public string obstacleCenterKey = "Tile_Obstacle_Center";
     public string obstacleLeftKey = "Tile_Obstacle_Left";
     public string obstacleRightKey = "Tile_Obstacle_Right";
+    public string comboJumpKey = "Tile_ComboJump";
+    public string slideGateKey = "Tile_SlideGate";
 
     [Header("Config")]
     public float tileLength = 20f;  // 각 타일 길이(20m)
@@ -78,7 +80,7 @@ public class TileSpawner : MonoBehaviour
 
     private string RandomKey()
     {
-        int r = Random.Range(0, 6);
+        int r = Random.Range(0, 8);
 
         if (r == 0)
         {
@@ -103,6 +105,16 @@ public class TileSpawner : MonoBehaviour
         if (r == 4)
         {
             return obstacleRightKey;
+        }
+
+        if (r == 5)
+        {
+            return comboJumpKey;
+        }
+
+        if (r == 6)
+        {
+            return slideGateKey;
         }
 
         return slideKey;

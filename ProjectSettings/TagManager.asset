@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Obstacle
+  - BoostPad
   layers:
   - Default
   - TransparentFX

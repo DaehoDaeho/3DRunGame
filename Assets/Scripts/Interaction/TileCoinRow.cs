@@ -5,17 +5,17 @@ public class TileCoinRow : MonoBehaviour
     public SimplePool pool;
     public string coinKey = "Coin";
 
-    public int count = 5;   // 몇 개 뿌릴지.
-    public float startZ = 4f;   // 타일 내부 시작 Z
-    public float stepZ = 2.5f;  // 간격.
-    public int laneIndex = 0;   // -1, 0, +1 (레인 선택)
-    public float laneOffset = 2f;   // 레인 간 X 거리.
+    public int count = 5;
+    public float startZ = 4f;
+    public float stepZ = 2.5f;
+
+    public int laneIndex = 0;   // -1, 0, +1
+    public float laneOffset = 2f;   // 레인 간 X
 
     private GameObject[] spawned;
 
     private void OnEnable()
     {
-        // 타일이 스폰될 때 호출됨
         if (pool == null)
         {
             pool = FindAnyObjectByType<SimplePool>();
@@ -39,7 +39,6 @@ public class TileCoinRow : MonoBehaviour
 
     private void OnDisable()
     {
-        // 타일이 반환될 때 코인도 함께 반환.
         if (spawned == null)
         {
             return;
