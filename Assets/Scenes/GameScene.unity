@@ -4327,7 +4327,7 @@ MonoBehaviour:
   anim: {fileID: 6982812147204510094}
   modelRoot: {fileID: 0}
   booster: {fileID: 6982812147204510097}
-  boostMultiplier: 1.4
+  boostMultiplier: 3
   duration: 1.5
 --- !u!114 &6982812147204510096
 MonoBehaviour:
@@ -4359,7 +4359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 6982812147204510095}
   mainCam: {fileID: 145762313}
-  fovBoost: 8
+  fovBoost: -10
   fovLerp: 8
 --- !u!4 &6983258931375860055
 Transform:
