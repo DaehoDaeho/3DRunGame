@@ -6,6 +6,6 @@ public class SpinY : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(0f, speed * Time.deltaTime, 0f, Space.World);
+        transform.Rotate(speed * Time.deltaTime, 0.0f, 0.0f, Space.World);
     }
 }

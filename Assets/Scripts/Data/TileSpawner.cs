@@ -7,15 +7,8 @@ public class TileSpawner : MonoBehaviour
     public Transform player;
     public SimplePool pool; 
 
-    [Header("Tile Keys (Pool keys)")]
-    public string straightKey = "Tile_Straight";
-    public string jumpKey = "Tile_Jump";
-    public string slideKey = "Tile_Slide";
-    public string obstacleCenterKey = "Tile_Obstacle_Center";
-    public string obstacleLeftKey = "Tile_Obstacle_Left";
-    public string obstacleRightKey = "Tile_Obstacle_Right";
-    public string comboJumpKey = "Tile_ComboJump";
-    public string slideGateKey = "Tile_SlideGate";
+    [Header("Tile Keys (Pool keys)")]    
+    public string[] tileKeys;
 
     [Header("Config")]
     public float tileLength = 20f;  // 각 타일 길이(20m)
@@ -30,7 +23,7 @@ public class TileSpawner : MonoBehaviour
         // 시작 타일 깔기: 직선 3 + 랜덤 2
         for (int i = 0; i < startTiles; ++i)
         {
-            string key = straightKey;
+            string key = tileKeys[0];
 
             if (i >= 3)
             {
@@ -80,44 +73,9 @@ public class TileSpawner : MonoBehaviour
 
     private string RandomKey()
     {
-        int r = Random.Range(0, 8);
+        int r = Random.Range(0, tileKeys.Length);
 
-        if (r == 0)
-        {
-            return straightKey;
-        }
-
-        if (r == 1)
-        {
-            return jumpKey;
-        }
-
-        if (r == 2)
-        {
-            return obstacleCenterKey;
-        }
-
-        if (r == 3)
-        {
-            return obstacleLeftKey;
-        }
-
-        if (r == 4)
-        {
-            return obstacleRightKey;
-        }
-
-        if (r == 5)
-        {
-            return comboJumpKey;
-        }
-
-        if (r == 6)
-        {
-            return slideGateKey;
-        }
-
-        return slideKey;
+        return tileKeys[r];
     }
 
     private void SpawnTile(string key)
@@ -153,7 +111,7 @@ public class TileSpawner : MonoBehaviour
         else
         {
             // 키를 모르면 기본 스트레이트로 반환해도 무방.
-            pool.Despawn(straightKey, tile);
+            pool.Despawn(tileKeys[0], tile);
         }
     }
 }

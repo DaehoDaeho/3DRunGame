@@ -22,8 +22,9 @@ public class RunnerPlayerController : MonoBehaviour
 
     [Header("BoostPad")]
     public RunnerSpeedBooster booster;
-    public float boostMultiplier = 1.4f;    // 속도 배율(1.2~1.6 권장)
-    public float duration = 1.5f;   // 지속 시간(초)
+    public float boostMultiplier = 3.0f;    // 속도 배율(1.2~1.6 권장)
+    public float slowMultiplier = -3.0f;    // 속도 배율(1.2~1.6 권장)
+    public float duration = 0.5f;   // 지속 시간(초)
 
     private CharacterController cc;
     private int laneIndex = 0;
@@ -155,6 +156,15 @@ public class RunnerPlayerController : MonoBehaviour
             {
                 Debug.Log("Boost!!");
                 booster.TriggerBoost(boostMultiplier, duration);
+            }
+        }
+
+        if (hit.collider != null && hit.collider.CompareTag("SlowPad") == true)
+        {
+            if (booster != null)
+            {
+                Debug.Log("Slow!!");
+                booster.TriggerBoost(slowMultiplier, duration);
             }
         }
     }

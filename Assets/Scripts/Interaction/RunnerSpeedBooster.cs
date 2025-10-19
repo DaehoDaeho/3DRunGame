@@ -5,7 +5,7 @@ public class RunnerSpeedBooster : MonoBehaviour
     public RunnerPlayerController playerController;
     public Camera mainCam;
 
-    public float fovBoost = 8f; // 부스트 시 카메라 FOV 가산(URP 카메라의 Field of View)
+    public float fovBoost = -20.0f; // 부스트 시 카메라 FOV 가산(URP 카메라의 Field of View)
     public float fovLerp = 8f;  // FOV 복귀 속도.
 
     private float boostTimer = 0f;
@@ -62,10 +62,10 @@ public class RunnerSpeedBooster : MonoBehaviour
 
     public void TriggerBoost(float multiplier, float time)
     {
-        if (multiplier < 1f)
-        {
-            multiplier = 1f;
-        }
+        //if (multiplier < 1f)
+        //{
+        //    multiplier = 1f;
+        //}
 
         if (time <= 0f)
         {

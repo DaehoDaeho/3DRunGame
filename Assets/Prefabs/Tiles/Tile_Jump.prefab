@@ -227,6 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1223091839112223502}
   - component: {fileID: 573004878318889814}
+  - component: {fileID: -3059151185285938109}
   m_Layer: 0
   m_Name: Tile_Jump
   m_TagString: Untagged
@@ -266,6 +267,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner: {fileID: 0}
   poolKey: 
+--- !u!114 &-3059151185285938109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176017955376170337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4395448793b99cc4fbb7b4a9b4a81f7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coins: []
 --- !u!1 &7460602804168578159
 GameObject:
   m_ObjectHideFlags: 0
