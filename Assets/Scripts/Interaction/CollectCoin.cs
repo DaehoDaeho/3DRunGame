@@ -15,6 +15,13 @@ public class CollectCoin : MonoBehaviour
                 hud.AddCoin(amount);
             }
 
+            //AudioSimple a = AudioSimple.I;
+
+            //if (a != null)
+            //{
+            //    a.PlayCoin();
+            //}
+
             gameObject.SetActive(false);
         }
     }

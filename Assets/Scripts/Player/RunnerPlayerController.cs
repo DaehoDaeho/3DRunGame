@@ -148,6 +148,39 @@ public class RunnerPlayerController : MonoBehaviour
             {
                 gm.GameOver();
             }
+
+            //// 1) 실드로 흡수 가능한지.
+            //RunnerPowerups p = GetComponent<RunnerPowerups>();
+
+            //if (p != null)
+            //{
+            //    bool absorbed = p.TryAbsorbHit();
+
+            //    if (absorbed == true)
+            //    {
+            //        // 흡수했으면 진행 계속(추가 연출은 다음 주에)
+            //        return;
+            //    }
+            //}
+
+            //// 2) 체크포인트가 있으면 리스폰.
+            //RunnerCheckpointManager cpm2 = GetComponent<RunnerCheckpointManager>();
+            //CharacterController cc2 = GetComponent<CharacterController>();
+
+            //if (cpm2 != null && cc2 != null)
+            //{
+            //    cpm2.Respawn(cc2, this.transform);
+            //    // 짧은 무적이 필요하면 Powerups에 1초 무적 타이머를 추가해도 됨(이번 주는 생략)
+            //    return;
+            //}
+
+            //// 3) 둘 다 없으면 게임오버.
+            //RunnerGameManager gm = FindAnyObjectByType<RunnerGameManager>();
+
+            //if (gm != null)
+            //{
+            //    gm.GameOver();
+            //}
         }
 
         if(hit.collider != null && hit.collider.CompareTag("BoostPad") == true)
@@ -156,6 +189,13 @@ public class RunnerPlayerController : MonoBehaviour
             {
                 Debug.Log("Boost!!");
                 booster.TriggerBoost(boostMultiplier, duration);
+
+                //AudioSimple a = AudioSimple.I;
+
+                //if (a != null)
+                //{
+                //    a.PlayBoost();
+                //}
             }
         }
 
