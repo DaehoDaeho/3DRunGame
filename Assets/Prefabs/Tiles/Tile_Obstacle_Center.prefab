@@ -332,6 +332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obs_1
       objectReference: {fileID: 0}
+    - target: {fileID: 4928144898292208593, guid: 5213857daf1cee249a15c048f1de81e4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

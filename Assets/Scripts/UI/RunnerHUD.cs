@@ -7,6 +7,10 @@ public class RunnerHUD : MonoBehaviour
     public TMP_Text distanceText;
     public TMP_Text speedText;
     public TMP_Text coinText;
+    public TMP_Text hpText;
+
+    public RunnerPlayerController playerController;
+
     public Rigidbody optionalRb; // 만약 Rigidbody를 사용한다면 연결.
 
     private Vector3 startPos;
@@ -20,6 +24,27 @@ public class RunnerHUD : MonoBehaviour
         }
 
         UpdateAll(0f, 0f, 0);
+
+        if(playerController != null)
+        {
+            UpdateHP(playerController.GetCurrentHp(), playerController.GetMaxHp());
+        }
+    }
+
+    private void OnEnable()
+    {
+        if(playerController != null)
+        {
+            playerController.OnChangedHP += UpdateHP;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (playerController != null)
+        {
+            playerController.OnChangedHP -= UpdateHP;
+        }
     }
 
     private void Update()
@@ -75,6 +100,14 @@ public class RunnerHUD : MonoBehaviour
         if (coinText != null)
         {
             coinText.text = $"Coins: {coin}";
+        }
+    }
+
+    void UpdateHP(int currentHp, int maxHp)
+    {
+        if(hpText != null)
+        {
+            hpText.text = $"HP: {currentHp} / {maxHp}";
         }
     }
 }

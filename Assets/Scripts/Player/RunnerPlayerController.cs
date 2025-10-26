@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class RunnerPlayerController : MonoBehaviour
@@ -26,6 +27,9 @@ public class RunnerPlayerController : MonoBehaviour
     public float slowMultiplier = -3.0f;    // 속도 배율(1.2~1.6 권장)
     public float duration = 0.5f;   // 지속 시간(초)
 
+    [Header("HP")]
+    public int maxHp = 3;
+
     private CharacterController cc;
     private int laneIndex = 0;
     private float targetX = 0.0f;
@@ -36,12 +40,17 @@ public class RunnerPlayerController : MonoBehaviour
     private float defaultHeight;
     private Vector3 defaultCenter;
 
+    private int currentHp;
+
+    public event Action<int, int> OnChangedHP;
+
     private void Awake()
     {
         cc = GetComponent<CharacterController>();
         defaultHeight = cc.height;
         defaultCenter = cc.center;
         targetX = 0.0f;
+        currentHp = maxHp;
     }
 
     // Update is called once per frame
@@ -141,48 +150,6 @@ public class RunnerPlayerController : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if(hit.collider != null && hit.collider.CompareTag("Obstacle") == true)
-        {
-            RunnerGameManager gm = FindAnyObjectByType<RunnerGameManager>();
-            if(gm != null)
-            {
-                gm.GameOver();
-            }
-
-            //// 1) 실드로 흡수 가능한지.
-            //RunnerPowerups p = GetComponent<RunnerPowerups>();
-
-            //if (p != null)
-            //{
-            //    bool absorbed = p.TryAbsorbHit();
-
-            //    if (absorbed == true)
-            //    {
-            //        // 흡수했으면 진행 계속(추가 연출은 다음 주에)
-            //        return;
-            //    }
-            //}
-
-            //// 2) 체크포인트가 있으면 리스폰.
-            //RunnerCheckpointManager cpm2 = GetComponent<RunnerCheckpointManager>();
-            //CharacterController cc2 = GetComponent<CharacterController>();
-
-            //if (cpm2 != null && cc2 != null)
-            //{
-            //    cpm2.Respawn(cc2, this.transform);
-            //    // 짧은 무적이 필요하면 Powerups에 1초 무적 타이머를 추가해도 됨(이번 주는 생략)
-            //    return;
-            //}
-
-            //// 3) 둘 다 없으면 게임오버.
-            //RunnerGameManager gm = FindAnyObjectByType<RunnerGameManager>();
-
-            //if (gm != null)
-            //{
-            //    gm.GameOver();
-            //}
-        }
-
         if(hit.collider != null && hit.collider.CompareTag("BoostPad") == true)
         {
             if (booster != null)
@@ -190,12 +157,10 @@ public class RunnerPlayerController : MonoBehaviour
                 Debug.Log("Boost!!");
                 booster.TriggerBoost(boostMultiplier, duration);
 
-                //AudioSimple a = AudioSimple.I;
-
-                //if (a != null)
-                //{
-                //    a.PlayBoost();
-                //}
+                if (AudioSimple.Instance != null)
+                {
+                    AudioSimple.Instance.PlayBoost();
+                }
             }
         }
 
@@ -207,5 +172,38 @@ public class RunnerPlayerController : MonoBehaviour
                 booster.TriggerBoost(slowMultiplier, duration);
             }
         }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        currentHp -= amount;
+        if(OnChangedHP != null)
+        {
+            OnChangedHP.Invoke(currentHp, maxHp);
+        }
+
+        if(currentHp <= 0)
+        {
+            RunnerGameManager gm = FindAnyObjectByType<RunnerGameManager>();
+            if (gm != null)
+            {
+                gm.GameOver();
+            }
+
+            if (AudioSimple.Instance != null)
+            {
+                AudioSimple.Instance.StopAllSounds();
+            }
+        }
+    }
+
+    public int GetCurrentHp()
+    {
+        return currentHp;
+    }
+
+    public int GetMaxHp()
+    {
+        return maxHp;
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5808765960567778609}
   - component: {fileID: 7316858298760713502}
   - component: {fileID: 1055471766732394874}
+  - component: {fileID: 901878336726427728}
   m_Layer: 0
   m_Name: Gate_A
   m_TagString: Obstacle
@@ -102,12 +103,24 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &901878336726427728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5055767503974979679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e717aa9343fcc4fbab9278d03bb52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6628722670104508163
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +414,7 @@ GameObject:
   - component: {fileID: 8570533976728514840}
   - component: {fileID: 78807177325539986}
   - component: {fileID: 2380142219396995829}
+  - component: {fileID: 5818479803103842519}
   m_Layer: 0
   m_Name: Gate_b
   m_TagString: Obstacle
@@ -491,9 +505,21 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5818479803103842519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9128153349659436405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e717aa9343fcc4fbab9278d03bb52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
