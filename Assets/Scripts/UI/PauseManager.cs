@@ -13,7 +13,7 @@ public class PauseManager : MonoBehaviour
             pausePanel.SetActive(false);
         }
 
-        Time.timeScale = 1.0f;
+        //Time.timeScale = 1.0f;
     }
 
     private void Update()

@@ -15,7 +15,7 @@ public class RunnerGameManager : MonoBehaviour
             gameOverPanel.SetActive(false);
         }
 
-        Time.timeScale = 1.0f;
+        //Time.timeScale = 1.0f;
     }
 
     public void GameOver()
