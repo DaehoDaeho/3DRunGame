@@ -18,14 +18,19 @@ public class RunnerGameManager : MonoBehaviour
         //Time.timeScale = 1.0f;
     }
 
+    public void SetOver(bool over)
+    {
+        isOver = over;
+    }
+
     public void GameOver()
     {
-        if(isOver == true)
-        {
-            return;
-        }
+        //if(isOver == true)
+        //{
+        //    return;
+        //}
 
-        isOver = true;
+        //isOver = true;
 
         if(gameOverPanel != null)
         {

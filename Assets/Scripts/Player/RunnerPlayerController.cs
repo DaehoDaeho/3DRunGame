@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class RunnerPlayerController : MonoBehaviour
@@ -41,7 +42,7 @@ public class RunnerPlayerController : MonoBehaviour
     private Vector3 defaultCenter;
 
     private int currentHp;
-
+    
     public event Action<int, int> OnChangedHP;
 
     private void Awake()
@@ -187,7 +188,8 @@ public class RunnerPlayerController : MonoBehaviour
             RunnerGameManager gm = FindAnyObjectByType<RunnerGameManager>();
             if (gm != null)
             {
-                gm.GameOver();
+                //gm.GameOver();
+                StartCoroutine(ProcessDead(gm));
             }
 
             if (AudioSimple.Instance != null)
@@ -195,6 +197,31 @@ public class RunnerPlayerController : MonoBehaviour
                 AudioSimple.Instance.StopAllSounds();
             }
         }
+        else
+        {
+            anim.SetTrigger("Hit");
+        }
+    }
+
+    IEnumerator ProcessDead(RunnerGameManager gm)
+    {
+        gm.SetOver(true);
+        Time.timeScale = 0.0f;
+
+        if (anim != null)
+        {
+            anim.updateMode = AnimatorUpdateMode.UnscaledTime;
+            anim.SetTrigger("Dead");
+        }
+
+        yield return new WaitForSecondsRealtime(3.0f);
+
+        if(anim != null)
+        {
+            anim.updateMode = AnimatorUpdateMode.Normal;
+        }
+
+        gm.GameOver();
     }
 
     public int GetCurrentHp()
