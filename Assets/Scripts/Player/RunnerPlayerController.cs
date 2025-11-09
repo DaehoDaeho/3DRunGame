@@ -44,6 +44,7 @@ public class RunnerPlayerController : MonoBehaviour
     private int currentHp;
     
     public event Action<int, int> OnChangedHP;
+    public event Action OnClearGame;
 
     private void Awake()
     {
@@ -232,5 +233,35 @@ public class RunnerPlayerController : MonoBehaviour
     public int GetMaxHp()
     {
         return maxHp;
+    }
+
+    public void ProcessClearGame()
+    {
+        StartCoroutine(CoProcessClearGame());
+    }
+
+    IEnumerator CoProcessClearGame()
+    {
+        transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
+
+        Time.timeScale = 0.0f;
+
+        if (anim != null)
+        {
+            anim.updateMode = AnimatorUpdateMode.UnscaledTime;
+            anim.SetTrigger("Victory");
+        }
+
+        yield return new WaitForSecondsRealtime(3.0f);
+
+        if (anim != null)
+        {
+            anim.updateMode = AnimatorUpdateMode.Normal;
+        }
+
+        if(OnClearGame != null)
+        {
+            OnClearGame.Invoke();
+        }
     }
 }

@@ -2,11 +2,13 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameScene : MonoBehaviour
 {
     public FadeScreen fadeScreen;
     public TMP_Text countText;
+    public TimerManager timerManager;
 
     private void OnEnable()
     {
@@ -47,6 +49,11 @@ public class GameScene : MonoBehaviour
             yield return new WaitForSecondsRealtime(1.0f);
             countText.gameObject.SetActive(false);
             Time.timeScale = 1.0f;
+
+            if(timerManager != null)
+            {
+                timerManager.StartTimer();
+            }
         }
     }
 
